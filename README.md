@@ -55,6 +55,10 @@ else = 0
 ---------------------------
 ## Camera
 
+### Funciton
+1. Image Read
+2. Image Save
+3. Image Encoding (base64)  
 
 --------------------------
 ## AI
