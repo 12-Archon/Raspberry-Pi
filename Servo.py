@@ -1,3 +1,6 @@
+import time
+import RPi.GPIO as GPIO
+
 def turnServo(pwm, recycle_result):
     pwm.start(3.0)
     if recycle_result == "플라스틱":
