@@ -41,18 +41,29 @@ def autoDriving(pwm1, pwm2):
         else:
             turnRight()
 
+def trangerAIresult(result):
+    createContentInstance('robot1', '/AIresult', result, addr)
+
+def tranferWeight(weight):
+    createContentInstance('robot1', '/weightdata/cnt1', weight, addr)
+
+def tranferImage(name):
+    createContentInstance('robot1', '/imagedata/RAWdata', name[6:-4], addr)
+
 def transferWifiState():
     # 인터넷 연결 시 날짜, 시간 모비우스로 전송
     now = datetime.now()
     content = str(now.year) + "_" + str(now.month) + "_" + str(now.day) + "_" + str(now.hour) + ":" + str(now.minute) + ":" + str(now.second)
-    createContentInstance('robot1', '/status/wificonn', content, addr)  
+    if getWifiState():
+        createContentInstance('robot1', '/status/wificonn', content, addr)  
 
 
 def transferCameraState():
     # 카메라 연결 시 날짜, 시간 모비우스로 전송
     now = datetime.now()
     content = str(now.year) + "_" + str(now.month) + "_" + str(now.day) + "_" + str(now.hour) + ":" + str(now.minute) + ":" + str(now.second)
-    createContentInstance('robot1', '/status/camstat', content, addr)  
+    if getCameraState():
+        createContentInstance('robot1', '/status/camstat', content, addr) 
 
 def transferCPUGPUTemp():
     # CPU, GPU 온도 모비우스로 전송
